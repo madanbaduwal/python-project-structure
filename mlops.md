@@ -1119,8 +1119,9 @@ poetry add packagename
 * Package jasati auta tag ma kam garni banauni
 
 
-## Run docker image in server
-
+## kubernets
+* Pull image from registry and run on kubernets to scaleup,version control, handle system failure.
+* For kubernets follow this documentation [tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/).
 ------------
 
 
@@ -1150,8 +1151,6 @@ module.classname or module.functionname
 * Docker hub(or any container registry)  bata image pull garni and local ma run garni.
 * Git ko replo lai clone garyara , Docker file ko help le image banayara run ni garna sakinxa
 
-
-## kubernets
 ------------
 
 # Use this project as templet
@@ -1170,6 +1169,7 @@ We can make this repository as template project for other project:
 
 * After click button we can create new repo.
 
+Note : Each type(android,web,desktop,ros,package...) ko project tamplate  banauni , and tyasai bata naya project banaudai naya lai feri template banauni purano lai hatauni tyasari garni and new template lai pinned garni.
 ## Cookiecutter
 
 # Production 
