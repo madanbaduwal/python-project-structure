@@ -3,6 +3,18 @@ MLOPS
 
 # Project initialization
 
+## Organization
+
+### [Cookiecutter](https://pypi.org/project/cookiecutter/)
+```
+$ pip install cookiecutter # To install cookiecutter
+$ cookiecutter https://github.com/audreyr/cookiecutter-pypackage ( Official guideline) 
+
+$ cookiecutter https://github.com/audreyfeldroy/cookiecutter-pypackage
+
+```
+
+
 ## Dependency management and packaging
 
 All things that need to do before doing project.
