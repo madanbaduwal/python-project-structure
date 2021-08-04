@@ -1131,6 +1131,10 @@ poetry add packagename
 
 #### First we have requirements.txt file
 
+```shell
+$ pip3 freeze > requirements. txt
+```
+
 #### Second  setup.py 
 
 ```python
