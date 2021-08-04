@@ -1467,7 +1467,7 @@ $ git push origin <tagname>
 
 --------------------------
 
-# Run project
+# Run this project
 -----------------
 ## Run githubclone project
 * Befor run project we have sure that
