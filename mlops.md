@@ -549,7 +549,7 @@ pass argumet from command line :
 ```
 ### [Typer](https://typer.tiangolo.com/)
 
-## RESTFUL API
+## Restful api
 
 ### Flask
 ### FastAPI
