@@ -186,8 +186,9 @@ $ git commit -m "chore: Add .gitignore file"
     * ``` git rm --cached FILENAME ```
     * ``` git check-ignore -v example.log``` Debugging ( kun kun file ignore vairaxa vanyara herna lai)
 
-# Linting , codeformatting = pre-commit hooks
+# pre-commit hooks(Linting , codeformatting...) 
 
+Before starting code and commit to it , we need to setup some pre-commit hook. Pre-commit hook check the code formate, testing .... when you do git commit -m "message". 
 
 * [EditorConfig](https://editorconfig.org/)
 * [Flake8](https://flake8.pycqa.org/en/latest/)
@@ -265,6 +266,68 @@ from typing import Union
 def add(a: Union[int, float], b: Union[int, float]) -> Union[int, float](return int or flot j ni hunxa sakxa):
 
     return a + b
+```
+## Documenting Code
+
+* ```comments:``` Terse descriptions of why a piece of code exists.
+* ```typing:``` Specification of a function's inputs and outputs data types, providing insight into what a function consumes and produces at a quick glance.
+```python
+def pad_sequences(sequences: Sequence, max_seq_len: int = 0) -> np.ndarray:
+    ...
+    return padded_sequences
+```
+
+* ```docstrings:``` Meaningful descriptions for functions and classes that describe overall utility as wel as arguments, returns, etc.
+
+
+```python
+
+def pad_sequences(sequences: np.ndarray, max_seq_len: int = 0) -> np.ndarray:
+    """Zero pad sequences to a specified `max_seq_len`
+    or to the length of the largest sequence in `sequences`.
+
+    Usage:
+
+    ```python
+    # Pad inputs
+    seq = np.array([[1, 2, 3], [1, 2]], dtype=object)
+    padded_seq = pad_sequences(sequences=seq, max_seq_len=5)
+    print (padded_seq)
+    ```
+    <pre>
+    [[1. 2. 3. 0. 0.]
+     [1. 2. 0. 0. 0.]]
+    </pre>
+
+    Note:
+        Input `sequences` must be 2D.
+
+    Args:
+        sequences (np.ndarray): 2D array of data to be padded.
+        max_seq_len (int, optional): Length to pad sequences to. Defaults to 0.
+
+    Raises:
+        ValueError: Input sequences are not two-dimensional.
+
+    Returns:
+        An array with the zero padded sequences.
+
+    """
+    # Check shape
+    if not sequences.ndim == 2:
+        raise ValueError("Input sequences are not two-dimensional.")
+
+    # Get max sequence length
+    max_seq_len = max(
+        max_seq_len, max(len(sequence) for sequence in sequences)
+    )
+
+    # Pad
+    padded_sequences = np.zeros((len(sequences), max_seq_len))
+    for i, sequence in enumerate(sequences):
+        padded_sequences[i][: len(sequence)] = sequence
+    return padded_sequences
+
 ```
 
 ## Command line
@@ -662,8 +725,8 @@ commands = flake8 python_lifecycle tests # command
 # CI/CD(github/workflows ma .yml file  haru lekhni and gitub project page ma action ma hernu debug k vairaxa vanyara purai code nai debug hunxa)
 
 ## Documentation Hosting
-
-There are lots of documentation tools one of them is Sphinx.
+* ```documentation:``` A rendered webpage that summarizes all the functions, classes, API calls, workflows, examples, etc. so we can view and traverse through the code base without actually having to look at the code just yet.
+There are lots of documentation tools one of them is Sphinx and mkdocs.
 
 ### Sphinx
 
@@ -901,7 +964,108 @@ version = str(pkg_meta["version"])
 release = version
 
 ```
-## Continuous integration : Testing (Pytest matra garxam tox ko help le)=
+### mkdocs
+
+* [mkdocs](https://github.com/mkdocs/mkdocs) (generates project documentation)
+* [mkdocs-macros-plugin](https://github.com/fralau/mkdocs_macros_plugin) (required plugins)
+* [mkdocs-material](https://github.com/squidfunk/mkdocs-material) (styling to beautiful render documentation)
+* [mkdocstrings](https://github.com/mkdocstrings/mkdocstrings) (fetch documentation automatically from docstrings)
+
+1. Create mkdocs.yml in root directory.
+
+```touch
+touch mkdocs.yaml
+```
+
+2. Fill in metadata, config, extensions and plugins (more setup options like custom styling, overrides, etc. here). I add some custom CSS inside docs/static/csc to make things look a little bit nicer :)
+
+```yml
+# Project information
+site_name: madan
+site_url: https://madanbaduwal.com.np/#mlops
+site_description: Tag suggestions for projects on madan.
+site_author: Madan baduwal
+
+# Repository
+repo_url: https://github.com/GokuMohandas/MLOps
+repo_name: GokuMohandas/MLOps
+edit_uri: "" #disables edit button
+...
+```
+3. Add logo image and favicon to
+
+```yml
+# Configuration
+theme:
+  name: material
+  logo: static/images/logo.png
+  favicon: static/images/favicon.ico
+```
+4.Fill in navigation in mkdocs.yml
+
+```yml
+
+# Page tree
+nav:
+  - Home:
+      - madan: index.md
+  - Getting started:
+    - Workflow: workflows.md
+  - Reference:
+    - CLI: tagifai/main.md
+    - Configuration: tagifai/config.md
+    - Data: tagifai/data.md
+    - Models: tagifai/models.md
+    - Training: tagifai/train.md
+    - Inference: tagifai/predict.md
+    - Utilities: tagifai/utils.md
+  - API: api.md
+
+```
+5. Fill in mkdocstrings plugin information inside mkdocs.yml.
+6. Rerun make install-dev to make sure you have the required packages for documentation.
+7. Add ::: tagifai.data Markdown file to populate it with the information from function and 8. class docstrings from tagifai/data.py. Repeat for other scripts as well. We can add our own text directly to the Markdown file as well, like we do in tagifai/config.md.
+Run python -m mkdocs serve to serve your docs to http://localhost:8000/.
+
+
+#### Automate  documentation hosting
+
+```yml
+name: documentation
+on:
+  push:
+    branches:
+    - master
+    - main
+  pull_request:
+    branches:
+    - master
+    - main
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7.10
+      - name: Caching
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
+      - name: Install dependencies
+        run: |
+          python -m pip install -e ".[docs]" --no-cache-dir
+      - name: Deploy documentation
+        run: mkdocs gh-deploy --force
+
+```
+
+
+## Continuous integration : Testing (Pytest matra garxam tox ko help le)
 
 Simply vannu parda tox run garxa yasle (tox ma pytest haru matra x )
 
