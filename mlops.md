@@ -1454,8 +1454,6 @@ $ git push origin <tagname>
 ## Dashbord 
 ### Streamlit
 
-## CI/CD workflows
-
 ## Infrastructure
 
 ## Feature Store
