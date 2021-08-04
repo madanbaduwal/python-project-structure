@@ -679,9 +679,9 @@ commands = flake8 python_lifecycle tests # command
 
 
 ------------
-## Interfaces
+# Interfaces
 
-### Command  line
+## Command  line
 
 We have lots command line sys.argv[],fire .... so on.
 
@@ -693,7 +693,7 @@ Answer :
 
 Note : test each module through command line.
 
-#### [Fire](https://google.github.io/python-fire/guide/) (fire le static , non-static dubai method ko lagi kam garxa))
+### [Fire](https://google.github.io/python-fire/guide/) (fire le static , non-static dubai method ko lagi kam garxa))
 We have used Fire in this project.
 
 1. Install fire on your poetry
@@ -725,17 +725,17 @@ pass argumet from command line :
 ...module_name function_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
 
 ```
-#### [Typer](https://typer.tiangolo.com/)
+### [Typer](https://typer.tiangolo.com/)
 
-### RESTFUL API
+## RESTFUL API
 
-#### Flask
-#### FastAPI
+### Flask
+### FastAPI
 
-### Webapp
-#### Streamlit
+## Webapp
+### Streamlit
 
-### Android,Desktop....
+## Android,Desktop....
 
 # CI/CD(github/workflows ma .yml file  haru lekhni and gitub project page ma action ma hernu debug k vairaxa vanyara purai code nai debug hunxa)
 
