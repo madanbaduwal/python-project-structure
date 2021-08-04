@@ -529,7 +529,69 @@ $ unset ENV_FOR_DYNACONF
 
 6. Command line
 
-## Testing
+------------
+# Interfaces
+
+## Command  line
+
+We have lots command line sys.argv[],fire .... so on.
+
+Why command line ?
+
+Answer :
+* before creating a complete project we need to compile each module(.py) , to chat what is function return and what is happening in each function so , command line is most important. 
+* Interact application through command line.
+
+Note : test each module through command line.
+
+### [Fire](https://google.github.io/python-fire/guide/) (fire le static , non-static dubai method ko lagi kam garxa))
+We have used Fire in this project.
+
+1. Install fire on your poetry
+
+
+```shell
+$ poetry add fire
+
+```
+2. Pass function or class to the fire then fire treate it automatically.
+
+```python
+import fire
+
+def main():
+   fire.Fire(class name/function name)  # yasari function or  class pass gariyasi
+
+
+if __name__ == "__main__":
+   main()
+
+
+```
+pass argumet from command line :
+
+```
+...module_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
+
+...module_name function_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
+
+```
+### [Typer](https://typer.tiangolo.com/)
+
+## RESTFUL API
+
+### Flask
+### FastAPI
+
+## Webapp
+### Streamlit
+
+## Android,Desktop....
+-----------------------
+
+# Testing
+
+## Code  testing
 There are lots of testing methods in
 
 Note : we can set test folder anywhere , pytest automatically find the function which prefix test_..  and execute this function.
@@ -677,65 +739,12 @@ commands = flake8 python_lifecycle tests # command
 ```
 
 
+## Data  testing
 
-------------
-# Interfaces
-
-## Command  line
-
-We have lots command line sys.argv[],fire .... so on.
-
-Why command line ?
-
-Answer :
-* before creating a complete project we need to compile each module(.py) , to chat what is function return and what is happening in each function so , command line is most important. 
-* Interact application through command line.
-
-Note : test each module through command line.
-
-### [Fire](https://google.github.io/python-fire/guide/) (fire le static , non-static dubai method ko lagi kam garxa))
-We have used Fire in this project.
-
-1. Install fire on your poetry
+## Model testing
 
 
-```shell
-$ poetry add fire
-
-```
-2. Pass function or class to the fire then fire treate it automatically.
-
-```python
-import fire
-
-def main():
-   fire.Fire(class name/function name)  # yasari function or  class pass gariyasi
-
-
-if __name__ == "__main__":
-   main()
-
-
-```
-pass argumet from command line :
-
-```
-...module_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
-
-...module_name function_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
-
-```
-### [Typer](https://typer.tiangolo.com/)
-
-## RESTFUL API
-
-### Flask
-### FastAPI
-
-## Webapp
-### Streamlit
-
-## Android,Desktop....
+--------------------
 
 # CI/CD(github/workflows ma .yml file  haru lekhni and gitub project page ma action ma hernu debug k vairaxa vanyara purai code nai debug hunxa)
 
@@ -1409,6 +1418,18 @@ $ git tag # list of the tag
 $ git push origin <tagname>
 
 ```
+--------------------------
+# Reproducibility
+
+--------------------------
+## Git 
+
+## Pre-commit hook
+
+## Versioning
+### Code
+### Data
+### Model
 
 ## Dockerization and [Automatic docker hosting of github in container registry](https://docs.docker.com/ci-cd/github-actions/)
 
@@ -1424,6 +1445,8 @@ $ git push origin <tagname>
 * Pull image from registry and run on kubernets to scaleup,version control, handle system failure.
 * For kubernets follow this documentation [tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/).
 ------------
+
+
 
 
 # Run project
@@ -1472,11 +1495,18 @@ We can make this repository as template project for other project:
 
 Note : Each type(android,web,desktop,ros,package...) ko project tamplate  banauni , and tyasai bata naya project banaudai naya lai feri template banauni purano lai hatauni tyasari garni and new template lai pinned garni.
 ## Cookiecutter
-
+--------------------
 # Production 
 
 ## Dashbord 
 ### Streamlit
+
+## CI/CD workflows
+
+## Infrastructure
+
+## Feature Store
+
 
 ## Monotoring
 ### Datadog
@@ -1486,5 +1516,7 @@ Note : Each type(android,web,desktop,ros,package...) ko project tamplate  banaun
 
 
 
+----------------------------------------
+# References
 
-
+* [Made with ml](https://madewithml.com/)
