@@ -5,6 +5,8 @@ MLOPS
 
 ## Dependency management and packaging
 
+All things that need to do before doing project.
+
 ### Poetry
 
 In this project we are going to use poetry dependency management packing.
