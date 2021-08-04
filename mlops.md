@@ -964,7 +964,9 @@ Create one more pull request and merge your changes to master. Check the actions
 
 For package hosting
 
-### [Publishing to a private repository](https://python-poetry.org/docs/libraries/) :
+### Poetry 
+
+#### [Publishing to a private repository](https://python-poetry.org/docs/libraries/) :
 1. Note : While you are working with any company you need to make private anything:
 
 2. Add following code to your pyproject.toml :
@@ -1029,7 +1031,7 @@ $ poetry add git+https://github.com/sdispater/pendulum.git#2.0.5
 
 ```
 
-### [Publishing to a public repository poetry or setup.py similar way](https://python-poetry.org/docs/libraries/):
+#### [Publishing to a public repository poetry or setup.py similar way](https://python-poetry.org/docs/libraries/):
 
 1. Add following code to your pyproject.toml
 
@@ -1066,7 +1068,7 @@ packages = [
 
 ```$ poetry publish```
 
-### Automation Publish package githubaction
+#### Automation Publish package githubaction
 
 1. Token Setup :
     * Create a PyPi account if you don’t have one.
@@ -1122,6 +1124,106 @@ NOTE: Generally a pre-release is published until it’s stable. It’s published
 5. install :
 ```
 poetry add packagename
+
+```
+
+### Virtual env
+
+#### First we have requirements.txt file
+
+#### Second  setup.py 
+
+```python
+
+# !/usr/bin/env python
+ 
+try:
+    import setuptools
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup
+ 
+# Load packages from requirements.txt
+with open(("requirements.txt"), "r") as file:
+    required_packages = [ln.strip() for ln in file.readlines()]
+    
+setuptools.setup(
+    install_requires=[required_packages],
+    name="madan", # PYPI ma  dekhini name
+    version="0.0.1",
+    author="Madan Baduwal",
+    author_email="madanbaduwal100@gmail.com",
+    description="Open source ai library",
+    url="https://github.com/MadanBaduwal/ai_library",
+    project_urls={
+        "Bug Tracker": "https://github.com/MadanBaduwal/ai_library/issues",
+    },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    package_dir={"": "madan"}, # git ko kun folder lai package  banauni vanni define garni
+    packages=setuptools.find_packages(where="madan"),
+    python_requires=">=3.6",
+)
+
+```
+#### Package automation
+
+* Set PYPI token in github secrets name as POETRY_PYPI_TOKEN_PYPI
+* And  setup flowing .yml file in local .workflows
+```yml
+
+name: Release
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Get full python version
+        id: full-python-version
+        run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info[:3]))")
+
+      - name: Install and set up Poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade poetry --pre
+          poetry config virtualenvs.in-project true
+      - name: Set up cache
+        uses: actions/cache@v1
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Build and publish
+        env:
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.POETRY_PYPI_TOKEN_PYPI }} # github ko secrets ma halni POETRY_PYPI_TOKEN_PYPI yo name le pypi ko api
+        run: |
+          poetry config pypi-token.pypi $POETRY_PYPI_TOKEN_PYPI
+          poetry publish --build
+
+```
+* Push github with tag name
+```
+$ git tag -a v0.1.0 -m " my first version 0.1.0"
+$ git tag # list of the tag
+$ git push origin <tagname>
 
 ```
 
