@@ -8,4 +8,4 @@ One is the repository contain all of the things that need while doing any projec
 
 * [MLOPS](https://github.com/MadanBaduwal/One/blob/main/mlops.md)
 
-* [Debugging and issues](https://github.com/MadanBaduwal/One/blob/main/debugging-and-issues.md)
+* [Error and issues](https://github.com/MadanBaduwal/One/blob/main/error-and-issues.md)
