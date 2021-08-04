@@ -717,6 +717,65 @@ commands = flake8 python_lifecycle tests # command
 
 --------------------
 
+# Reproducibility
+
+--------------------------
+## Git 
+
+## pre-commit hooks(Linting , codeformatting...) 
+
+Before starting code and commit to it , we need to setup some pre-commit hook. Pre-commit hook check the code formate, testing .... when you do git commit -m "message". 
+
+* [EditorConfig](https://editorconfig.org/)
+* [Flake8](https://flake8.pycqa.org/en/latest/)
+* [Black](https://black.readthedocs.io/en/stable/)
+* [Isort](https://black.readthedocs.io/en/stable/)
+* [Mypy](http://mypy-lang.org/)
+
+All above linting and code formatting are handle by pre-commit hook.
+
+ **Pre-commit hooks (linting,code formatting,testing)**
+
+* Look at .pre-commit-hooks.yaml and .pre-commit-config.yaml , what are doing codeformatting,linting,testing so on.
+
+* Look some command of pre-commit hook :
+```shell
+$ poetry add pre-commit # this is already install while installing poetry install
+
+$ pre-commit install  # Note : yo chai poetry install le install gareko hudaina so yo afai garni ok. Install the git hook scripts (every commit garda afai precommit hook check garna)
+
+$ pre-commit run --all-files
+
+```
+
+* Note :
+    * Jun file/folder ma error auxa tyo file folder yellow color le dekhauxa
+    * Terminal ma ni ramro sanga padni k error x vanyara.
+
+
+## Versioning
+
+### Code
+
+### Data
+
+### Model
+
+## Dockerization and [Automatic docker hosting of github in container registry](https://docs.docker.com/ci-cd/github-actions/)
+
+* Package hoating garya jastai ho
+* Setup  Dockerfile or docker.yml file
+
+* Dokerhub(or any contain registry) ma gayara token create garni and tyo token lai git ko secrets ma rakhni
+* .github/workflow ma gayara .yml job banauni docker ho lagi
+* Package jasati auta tag ma kam garni banauni
+
+
+## kubernets
+* Pull image from registry and run on kubernets to scaleup,version control, handle system failure.
+* For kubernets follow this documentation [tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/).
+-----------------
+--------------------
 # CI/CD(github/workflows ma .yml file  haru lekhni and gitub project page ma action ma hernu debug k vairaxa vanyara purai code nai debug hunxa)
 
 ## Documentation Hosting
@@ -1390,64 +1449,7 @@ $ git push origin <tagname>
 
 ```
 --------------------------
-# Reproducibility
 
---------------------------
-## Git 
-
-## pre-commit hooks(Linting , codeformatting...) 
-
-Before starting code and commit to it , we need to setup some pre-commit hook. Pre-commit hook check the code formate, testing .... when you do git commit -m "message". 
-
-* [EditorConfig](https://editorconfig.org/)
-* [Flake8](https://flake8.pycqa.org/en/latest/)
-* [Black](https://black.readthedocs.io/en/stable/)
-* [Isort](https://black.readthedocs.io/en/stable/)
-* [Mypy](http://mypy-lang.org/)
-
-All above linting and code formatting are handle by pre-commit hook.
-
- **Pre-commit hooks (linting,code formatting,testing)**
-
-* Look at .pre-commit-hooks.yaml and .pre-commit-config.yaml , what are doing codeformatting,linting,testing so on.
-
-* Look some command of pre-commit hook :
-```shell
-$ poetry add pre-commit # this is already install while installing poetry install
-
-$ pre-commit install  # Note : yo chai poetry install le install gareko hudaina so yo afai garni ok. Install the git hook scripts (every commit garda afai precommit hook check garna)
-
-$ pre-commit run --all-files
-
-```
-
-* Note :
-    * Jun file/folder ma error auxa tyo file folder yellow color le dekhauxa
-    * Terminal ma ni ramro sanga padni k error x vanyara.
-
-
-## Versioning
-
-### Code
-
-### Data
-
-### Model
-
-## Dockerization and [Automatic docker hosting of github in container registry](https://docs.docker.com/ci-cd/github-actions/)
-
-* Package hoating garya jastai ho
-* Setup  Dockerfile or docker.yml file
-
-* Dokerhub(or any contain registry) ma gayara token create garni and tyo token lai git ko secrets ma rakhni
-* .github/workflow ma gayara .yml job banauni docker ho lagi
-* Package jasati auta tag ma kam garni banauni
-
-
-## kubernets
-* Pull image from registry and run on kubernets to scaleup,version control, handle system failure.
-* For kubernets follow this documentation [tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/).
------------------
 # Run project
 -----------------
 ## Run githubclone project
