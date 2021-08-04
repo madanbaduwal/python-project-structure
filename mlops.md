@@ -964,6 +964,43 @@ version = str(pkg_meta["version"])
 release = version
 
 ```
+#### Automated Document Hosting
+Note : First you need to setup your github page  For that you need to create github.io extension page.
+1. Create a new ssh key, using the provided email as a label.
+```shell
+$ ssh-keygen -t rsa -b 4096 -C "git gmil" -f ~/.ssh/python-lifecycle-gh-pages -N ""
+
+```
+2. Copy the SSH key to your clipboard.
+
+```shell
+xclip -sel clip < ~/.ssh/python-lifecycle-gh-pages.pub
+
+```
+
+Paste it to Deploy Keys section in your project settings with Allow write access(github ko repository ko deploy key section ma pest garni)
+
+3. Copy private key
+```shell
+xclip -sel clip < ~/.ssh/python-lifecycle-gh-pages
+
+```
+Paste it to Secrets section as ACTIONS_DEPLOY_KEY (github ko repository ko secrets section ma pest garni)
+
+Then in local
+
+```shell
+
+$ git add .github/workflows/gh-pages.yml
+$ git commit -m "docs: Document Hosting via GitHub Pages"
+$ git push
+
+
+
+```
+Create one more pull request and merge your changes to master. Check the actions tab once your changes have been merged.
+
+
 ### mkdocs
 
 * [mkdocs](https://github.com/mkdocs/mkdocs) (generates project documentation)
@@ -1085,43 +1122,6 @@ Note : master ma push huda matra run hunxa
 
 
 Note : branch bata master ko lagi pull request pathuda sabai testing heryara balla merge garni.
-
-
-## Documentation hosting
-Note : First you need to setup your github page  For that you need to create github.io extension page.
-1. Create a new ssh key, using the provided email as a label.
-```shell
-$ ssh-keygen -t rsa -b 4096 -C "git gmil" -f ~/.ssh/python-lifecycle-gh-pages -N ""
-
-```
-2. Copy the SSH key to your clipboard.
-
-```shell
-xclip -sel clip < ~/.ssh/python-lifecycle-gh-pages.pub
-
-```
-
-Paste it to Deploy Keys section in your project settings with Allow write access(github ko repository ko deploy key section ma pest garni)
-
-3. Copy private key
-```shell
-xclip -sel clip < ~/.ssh/python-lifecycle-gh-pages
-
-```
-Paste it to Secrets section as ACTIONS_DEPLOY_KEY (github ko repository ko secrets section ma pest garni)
-
-### Automated Document Hosting
-
-```shell
-
-$ git add .github/workflows/gh-pages.yml
-$ git commit -m "docs: Document Hosting via GitHub Pages"
-$ git push
-
-
-
-```
-Create one more pull request and merge your changes to master. Check the actions tab once your changes have been merged.
 
 
 ## Package hosting
