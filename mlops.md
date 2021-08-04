@@ -3,11 +3,13 @@ MLOPS
 
 # Project initialization
 
-## Poetry
+## Dependency management and packaging
+
+### Poetry
 
 In this project we are going to use poetry dependency management packing.
 
-### Step 1 : Install poetry on your system
+#### Step 1 : Install poetry on your system
 * Poetry documentation
 osx / linux / bashonwindows install instructions
 
@@ -24,20 +26,20 @@ $ (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry
 
 ```
 
-### Step 2 : Set the path of your environment
+#### Step 2 : Set the path of your environment
 
 ```shell
 $ source $HOME/.poetry/env
 
 ```
 
-### Step 3 : colone repository
+#### Step 3 : colone repository
 
 ```shell
 $ git clone  repo..
 ```
 
-### Step 4 : Activate  poetry environment
+#### Step 4 : Activate  poetry environment
 
 ```shell
 $ cd repo
@@ -45,13 +47,13 @@ $ poetry shell
 
 ```
 
-### Step 5 : Install all poetry dependencies
+#### Step 5 : Install all poetry dependencies
 
 ```shell
 $ poetry install
 ```
 
-### Some features of poetry
+#### Some features of poetry
 
 
 1. Install package view poetry
@@ -70,7 +72,7 @@ $ modulename parameters (parameters are receive by command line intrepreater fir
 
 ```
 
-## Virtual environment(requirements.txt)
+### Virtual environment(requirements.txt)
 
 ```shell
 python3 -m venv venv
@@ -78,7 +80,7 @@ source venv/bin/activate
 pip3 freeze > requirements.txt
 pip3 install requirements.txt
 ```
-## conda
+### conda
 ```shell
 
 $ pip install conda
@@ -103,7 +105,7 @@ $ conda env create -n conda-env -f /path/to/environment.yml
 
 ```
 
-## Git initialize
+### Git initialize
 
 1. Set github credential
 ```shell
