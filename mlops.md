@@ -172,7 +172,7 @@ $ git commit -m "chore: Add .gitignore file"
     * ``` git rm --cached FILENAME ```
     * ``` git check-ignore -v example.log``` Debugging ( kun kun file ignore vairaxa vanyara herna lai)
 
-## Linting , codeformatting = pre-commit hooks
+# Linting , codeformatting = pre-commit hooks
 
 
 * [EditorConfig](https://editorconfig.org/)
