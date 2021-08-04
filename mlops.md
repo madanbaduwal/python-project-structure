@@ -1448,6 +1448,25 @@ $ git tag # list of the tag
 $ git push origin <tagname>
 
 ```
+--------------------
+# Production 
+
+## Dashbord 
+### Streamlit
+
+## CI/CD workflows
+
+## Infrastructure
+
+## Feature Store
+
+
+## Monotoring
+### Datadog
+
+## Pipeline
+### Airflow
+
 --------------------------
 
 # Run project
@@ -1496,26 +1515,6 @@ We can make this repository as template project for other project:
 
 Note : Each type(android,web,desktop,ros,package...) ko project tamplate  banauni , and tyasai bata naya project banaudai naya lai feri template banauni purano lai hatauni tyasari garni and new template lai pinned garni.
 ## Cookiecutter
---------------------
-# Production 
-
-## Dashbord 
-### Streamlit
-
-## CI/CD workflows
-
-## Infrastructure
-
-## Feature Store
-
-
-## Monotoring
-### Datadog
-
-## Pipeline
-### Airflow
-
-
 
 ----------------------------------------
 # References
