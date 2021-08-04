@@ -329,48 +329,6 @@ def pad_sequences(sequences: np.ndarray, max_seq_len: int = 0) -> np.ndarray:
     return padded_sequences
 
 ```
-
-## Command line
-We have lots command line sys.argv[],fire .... so on.
-
-Why command line ?
-
-Answer : before creating a complete project we need to compile each module(.py) , to chat what is function return and what is happening in each function so , command line is most important.
-
-Note : test each module through command line.
-
-### [Fire](https://google.github.io/python-fire/guide/) (fire le ststic , non-static dubai method ko lagi kam garxa))
-We have used Fire in this project.
-
-1. Install fire on your poetry
-
-
-```shell
-$ poetry add fire
-
-```
-2. Pass function or class to the fire then fire treate it automatically.
-
-```python
-import fire
-
-def main():
-   fire.Fire(class name/function name)  # yasari function or  class pass gariyasi
-
-
-if __name__ == "__main__":
-   main()
-
-
-```
-pass argumet from command line :
-
-```
-...module_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
-
-...module_name function_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
-
-```
 ## Logging
 We have lots of logging library and inbuilt logging tools:
 
@@ -721,6 +679,63 @@ commands = flake8 python_lifecycle tests # command
 
 
 ------------
+## Interfaces
+
+### Command  line
+
+We have lots command line sys.argv[],fire .... so on.
+
+Why command line ?
+
+Answer :
+* before creating a complete project we need to compile each module(.py) , to chat what is function return and what is happening in each function so , command line is most important. 
+* Interact application through command line.
+
+Note : test each module through command line.
+
+#### [Fire](https://google.github.io/python-fire/guide/) (fire le static , non-static dubai method ko lagi kam garxa))
+We have used Fire in this project.
+
+1. Install fire on your poetry
+
+
+```shell
+$ poetry add fire
+
+```
+2. Pass function or class to the fire then fire treate it automatically.
+
+```python
+import fire
+
+def main():
+   fire.Fire(class name/function name)  # yasari function or  class pass gariyasi
+
+
+if __name__ == "__main__":
+   main()
+
+
+```
+pass argumet from command line :
+
+```
+...module_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
+
+...module_name function_name params (note module ma  if __name__ == "__main__": yo hunuparxa natra sidai module execute hudaina)
+
+```
+#### [Typer](https://typer.tiangolo.com/)
+
+### RESTFUL API
+
+#### Flask
+#### FastAPI
+
+### Webapp
+#### Streamlit
+
+### Android,Desktop....
 
 # CI/CD(github/workflows ma .yml file  haru lekhni and gitub project page ma action ma hernu debug k vairaxa vanyara purai code nai debug hunxa)
 
