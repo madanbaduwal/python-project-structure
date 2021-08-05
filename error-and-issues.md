@@ -34,6 +34,15 @@ Exampple : export PYTHONPATH="${PYTHONPATH}:/home/madan/Desktop/mina/"
 * pyproject.toml ma text haru, code formatting/styling haru lekhni and setup.py bata publish garya ni hunxa.
 * Dubai lai parally use garda ni hunxa.
 
+# Folder location issue
+
+```
+PROJ_PTH = os.path.abspath(__file__) # yo jun .py file bhitra lekhyo tyo file ko location ko absolute path denxa.
+
+CONFIG_PATH = PROJ_PTH.split('/')[:-2]
+
+```
+
 # References
 
 * https://github.com/GokuMohandas/MLOps
