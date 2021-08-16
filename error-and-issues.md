@@ -22,9 +22,19 @@ Github action is the debugging place of  github workflows(.yml file debugging in
 ## Folder location issue : OS module solve this
 
 ```
+
+from pathlib import Path
+
+BASE_DIR = Path(__file__).parent
+
+
+or 
+
+
 PROJ_PTH = os.path.abspath(__file__) # yo jun .py file bhitra lekhyo tyo file ko location ko absolute path denxa.
 
 CONFIG_PATH = PROJ_PTH.split('/')[:-2]
+
 
 ```
 ------------------
