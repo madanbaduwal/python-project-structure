@@ -250,6 +250,7 @@ def pad_sequences(sequences: Sequence, max_seq_len: int = 0) -> np.ndarray:
 
 * ```docstrings:``` Meaningful descriptions for functions and classes that describe overall utility as wel as arguments, returns, etc.
 
+    * Visual studio extension : Python Docstrings Generator 
 
 ```python
 
