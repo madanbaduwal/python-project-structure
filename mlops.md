@@ -186,7 +186,6 @@ $ git commit -m "chore: Add .gitignore file"
     * ``` git rm --cached FILENAME ```
     * ``` git check-ignore -v example.log``` Debugging ( kun kun file ignore vairaxa vanyara herna lai)
 
-## Makefile
 
 ------------
 # Project setup
@@ -503,7 +502,55 @@ $ export ENV_FOR_DYNACONF = production
 $ unset ENV_FOR_DYNACONF
 ```
 
-6. Command line
+## Styling
+
+Add the following code into pyproject.toml.
+
+```
+# Black formatting
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+'''
+
+
+# iSort
+[tool.isort]
+profile = "black"
+line_length = 79
+multi_line_output = 3
+include_trailing_comma = true
+skip_gitignore = true
+virtual_env = "venv"
+
+[flake8]
+exclude = venv
+ignore = E501, W503, E226
+max-line-length = 79
+
+# E501: Line too long
+# W503: Line break occurred before binary operator
+# E226: Missing white space around arithmetic operator
+
+
+
+```
+
+## Makefile
+
 
 ------------
 # Interfaces
