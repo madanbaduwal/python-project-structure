@@ -99,6 +99,8 @@ pip3 install requirements.txt
 
 $ pip install conda
 
+or if you already install anacond then , toy can access anaconda prompt terminal
+
 $ conda create -n conda-env python=3.7 numpy=1.16.1 requests=2.19.1
 
 $ conda env list
