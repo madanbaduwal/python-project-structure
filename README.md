@@ -1,6 +1,6 @@
-# One
+# ML OPS
 ------
-One is the repository contain all of the things that need while doing any projects.
+ML OPS is the repository contain all of the things that need while doing any projects.
 
 ## Table of content
 
