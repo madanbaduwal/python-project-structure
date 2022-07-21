@@ -14,6 +14,13 @@ $ cookiecutter https://github.com/audreyfeldroy/cookiecutter-pypackage
 
 ```
 
+### [Django](https://www.djangoproject.com/)
+```
+$ python -m pip install Django
+$ django-admin startproject mysite
+$ python manage.py runserver
+$ python manage.py startapp polls # each app for each link(each app for each web application header menu button)
+```
 
 ## Dependency management and packaging
 
